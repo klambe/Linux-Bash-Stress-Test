@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # x00123430 Kevin Lambe
-echo "co    N    IDLE" >results.dat
+echo "co    N    CPU usage" >results.dat
 for i in {1..50}
 do
 # do something here
 ./loadtest $i &
-cpu=`mpstat 3 1 -o JSON | jq '100 - .sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
+cpu=`mpstat 5 1 -o JSON | jq '100 - .sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
 
 
 #sleep 5
